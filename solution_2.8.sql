@@ -66,19 +66,6 @@ JOIN sakila.inventory i
 USING (film_id)
 WHERE f.title = 'Academy Dinosaur' AND i.store_id = '1';
 
-SELECT 
-CASE 
-WHEN COUNT(*) > 0 THEN 'Yes' 
-ELSE 'No' 
-END AS available_for_rent
-FROM sakila.rental r
-JOIN sakila.inventory i
-USING (inventory_id)
-JOIN sakila.film f
-USING (film_id)
-JOIN sakila.store s
-USING (store_id)
-WHERE f.title = 'Academy Dinosaur' AND s.store_id = 1;
 
 -- 7. Get all pairs of actors that worked together.
 
