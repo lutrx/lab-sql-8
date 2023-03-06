@@ -68,7 +68,20 @@ WHERE f.title = 'Academy Dinosaur' AND i.store_id = '1';
 
 
 -- 7. Get all pairs of actors that worked together.
+SELECT fifa1.actor_id AS actor_1, fifa2.actor_id AS actor_2, fifa1.film_id AS film_id
+FROM sakila.film_actor fifa1
+JOIN sakila.film_actor fifa2
+ON (fifa1.actor_id > fifa2.actor_id) AND (fifa1.film_id = fifa2.film_id)
+ORDER BY fifa1.film_id;
+
 
 -- 8. Get all pairs of customers that have rented the same film more than 3 times.
+-- First step: get a table of customer pairs that rented the same film
+SELECT r1.inventory_id, r1.customer_id AS c1, r2.customer_id AS c2
+FROM sakila.rental r1
+JOIN sakila.rental r2
+ON (r1.customer_id > r2.customer_id) AND (r1.inventory_id = r2.inventory_id)
+ORDER BY r1.inventory_id ASC;
+
 
 -- 9. For each film, list actor that has acted in more films.
